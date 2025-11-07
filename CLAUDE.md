@@ -56,7 +56,12 @@
 
 | コード変更 | 参照ドキュメント | 更新ドキュメント |
 |----------|---------------|----------------|
-||||
+| `services/models.py` | データスキーマ定義書.md | データスキーマ定義書.md |
+| `services/data_manager.py` | データスキーマ定義書.md、アーキテクチャ設計書.md | - |
+| `services/todo_service.py` | 要件定義書.md、アーキテクチャ設計書.md | - |
+| `services/main.py` | CLI仕様書.md、アーキテクチャ設計書.md | - |
+| 新規機能追加 | 要件定義書.md、開発TODO.md | 要件定義書.md、CLI仕様書.md、開発TODO.md |
+| データスキーマ変更 | データスキーマ定義書.md | データスキーマ定義書.md、models.py |
 
 # ═══════════════════════════════════════════════════
 # コード生成ルール / Code Generation Rules
@@ -84,5 +89,15 @@ logging.info("検索中...")
 ## ディレクトリ構成
 
 ```
-docs/       # ドキュメント
-services/   # サービス実装
+docs/                        # ドキュメント
+  ├── 要件定義書.md
+  ├── データスキーマ定義書.md
+  ├── アーキテクチャ設計書.md
+  ├── CLI仕様書.md
+  └── 開発TODO.md
+services/                    # サービス実装
+  ├── models.py             # データモデル
+  ├── data_manager.py       # データ管理層
+  ├── todo_service.py       # ビジネスロジック
+  └── main.py               # CLIエントリーポイント
+tests/                       # テストコード
