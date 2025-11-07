@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(touch:*)",
+      "mcp__serena*"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enabledMcpjsonServers": [
+    "serena",
+    "sequential-thinking"
+  ],
+  "enableAllProjectMcpServers": true
+}
