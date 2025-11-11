@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleTodo - GUI Mock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Yu Gothic UI', 'Meiryo', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .window {
+            width: 600px;
+            height: 400px;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .title-bar {
+            background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+            padding: 8px 12px;
+            border-bottom: 1px solid #cccccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-text {
+            font-size: 13px;
+            font-weight: normal;
+            color: #333333;
+        }
+
+        .close-button {
+            width: 20px;
+            height: 20px;
+            background-color: #e81123;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            font-size: 14px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            background-color: #c50e1f;
+        }
+
+        .content {
+            flex: 1;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .input-label {
+            font-size: 11px;
+            color: #666666;
+            white-space: nowrap;
+        }
+
+        .input-field {
+            flex: 1;
+            padding: 6px 10px;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            font-size: 11px;
+            font-family: 'Yu Gothic UI', 'Meiryo', sans-serif;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #0078d7;
+        }
+
+        .add-button {
+            padding: 6px 20px;
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-size: 11px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .add-button:hover {
+            background-color: #005a9e;
+        }
+
+        .list-area {
+            flex: 1;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            background-color: #ffffff;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .list-header {
+            display: grid;
+            grid-template-columns: 50px 250px 80px 150px;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #cccccc;
+            font-size: 10px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .list-header div {
+            padding: 6px 8px;
+            border-right: 1px solid #cccccc;
+        }
+
+        .list-header div:last-child {
+            border-right: none;
+        }
+
+        .list-body {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .list-row {
+            display: grid;
+            grid-template-columns: 50px 250px 80px 150px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        .list-row:hover {
+            background-color: #e8f4ff;
+        }
+
+        .list-row.selected {
+            background-color: #cce8ff;
+        }
+
+        .list-row.completed {
+            background-color: #f8f8f8;
+        }
+
+        .list-row div {
+            padding: 6px 8px;
+            border-right: 1px solid #e0e0e0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .list-row div:last-child {
+            border-right: none;
+        }
+
+        .button-area {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-start;
+        }
+
+        .action-button {
+            padding: 6px 16px;
+            background-color: #ffffff;
+            color: #333333;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .action-button:hover {
+            background-color: #e8e8e8;
+        }
+
+        .action-button.delete {
+            color: #e81123;
+        }
+
+        /* スクロールバーのスタイル */
+        .list-body::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .list-body::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+
+        .list-body::-webkit-scrollbar-thumb {
+            background: #c0c0c0;
+            border-radius: 6px;
+        }
+
+        .list-body::-webkit-scrollbar-thumb:hover {
+            background: #a0a0a0;
+        }
+    </style>
+</head>
+<body>
+    <div class="window">
+        <div class="title-bar">
+            <div class="title-text">SimpleTodo</div>
+            <button class="close-button">×</button>
+        </div>
+
+        <div class="content">
+            <div class="input-area">
+                <span class="input-label">新しいタスク:</span>
+                <input type="text" class="input-field" placeholder="タスクを入力...">
+                <button class="add-button">追加</button>
+            </div>
+
+            <div class="list-area">
+                <div class="list-header">
+                    <div>ID</div>
+                    <div>タイトル</div>
+                    <div>状態</div>
+                    <div>作成日時</div>
+                </div>
+                <div class="list-body">
+                    <div class="list-row">
+                        <div>1</div>
+                        <div>プロジェクトの要件定義を作成する</div>
+                        <div>未完了</div>
+                        <div>01/15 10:30</div>
+                    </div>
+                    <div class="list-row completed">
+                        <div>2</div>
+                        <div>データベース設計を確認</div>
+                        <div>完了</div>
+                        <div>01/15 11:00</div>
+                    </div>
+                    <div class="list-row selected">
+                        <div>3</div>
+                        <div>GUIデザイン書を作成</div>
+                        <div>未完了</div>
+                        <div>01/15 14:20</div>
+                    </div>
+                    <div class="list-row">
+                        <div>4</div>
+                        <div>テストケースを実装</div>
+                        <div>未完了</div>
+                        <div>01/15 15:45</div>
+                    </div>
+                    <div class="list-row completed">
+                        <div>5</div>
+                        <div>ドキュメントのレビュー</div>
+                        <div>完了</div>
+                        <div>01/15 16:10</div>
+                    </div>
+                    <div class="list-row">
+                        <div>6</div>
+                        <div>コードのリファクタリング</div>
+                        <div>未完了</div>
+                        <div>01/16 09:00</div>
+                    </div>
+                    <div class="list-row">
+                        <div>7</div>
+                        <div>パフォーマンステストを実施</div>
+                        <div>未完了</div>
+                        <div>01/16 10:30</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-area">
+                <button class="action-button">完了/未完了切替</button>
+                <button class="action-button delete">削除</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
