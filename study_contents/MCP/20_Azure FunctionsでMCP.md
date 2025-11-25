@@ -2,6 +2,12 @@
 
 ---
 
+以下は、Azure Functionsを使ったカスタムMCPの作成方法を説明します。
+Azure FunctionのMCP拡張機能を使って、MCPとしての仕組みをAzure Function側にお任せしています（02_技術仕様で説明したほぼすべての内容を自動調整）。
+但し、自動の代わりに「10_MCPの4要素」で述べた `Tools` の機能のみを提供しています。
+
+---
+
 ## 準備
 1. `Azure Functions Core Tools` のインストール（未インストールのとき）
     ```bash
@@ -9,7 +15,7 @@
     npm install -g azure-functions-core-tools@4
     ```
 2. 拡張機能「Azure Functions」を入れる<br>
-    <img src="./images/Functions拡張.png" alt="代替テキスト" width="400">
+    <img src="./images/Functions拡張.png" alt="代替テキスト" width="700">
 
 ---
 
@@ -19,9 +25,9 @@
     ```bash
     func init <プロジェクト名>
     ```
-    <img src="./images/001.png" alt="代替テキスト" width="400">
+    <img src="./images/001.png" alt="代替テキスト" width="600">
 - Pythonを選ぶ<br>
-    <img src="./images/002.png" alt="代替テキスト" width="400">
+    <img src="./images/002.png" alt="代替テキスト" width="600">
 - 作成されたフォルダを開き直す
 - requirements.txt を使って環境作成（仮想環境使うならアクティブ化する）
 - 中身確認：以下が自動で作られたはず<br>
@@ -30,17 +36,14 @@
 ---
 
 ## host.json 修正
-- `host.json` 元の状態<br>
-   <img src="./images/100.png" alt="代替テキスト" width="500"> 
-
-- 修正： `Experimental` を追記<br>
+- `host.json` を修正： `Experimental` を追記<br>
     <img src="./images/101.png" alt="代替テキスト" width="500"> 
 
 ---
 
 ## function_app.py 修正
-- AIコーディングに指示
-    **プロンプトの要点**
+- AIコーディングに指示：<br>
+**プロンプトの要点**
     ```
     ## 前提
     Azure functions のMCP拡張を使ってカスタムMCPサーバーを作成します。
@@ -49,6 +52,11 @@
         - @app.mcp_tool_trigger(arg_name="context", tool_name="...", description="...", tool_properties="...")
         - 例：
             ```
+            import azure.functions as func
+
+            # Azure Functions アプリの初期化
+            app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+
             # 疎通確認用のシンプルなMCPツール
             @app.mcp_tool_trigger(
                 arg_name="context",
@@ -124,17 +132,17 @@
 ---
 
 ## ClaudeにMCPを接続
-> **注意**
-> 　下記の接続方法は認証がなく、シークレットをURLに直接埋め込んだ **とりあえず接続できる** 方法です。
-> 　接続URLがそのまま漏れると、部外者でもカスタムMCPに接続できます。
-> 　認証込みの仕組みが確立するまでは、開発者＋信用できる範囲までの公開に留めてください。
+> **注意**<br>
+> 　下記の接続方法は認証がなく、シークレットをURLに直接埋め込んだ **とりあえず接続できる** 方法です。<br>
+> 　接続URLがそのまま漏れると、部外者でもカスタムMCPに接続できます。<br>
+> 　認証込みの仕組みが確立するまでは、開発者＋信用できる範囲までの公開に留めてください。<br>
 > 　なお、Webアプリ化したシステムからFunctionsのMCPにつなぐ場合は、URLを環境変数で管理すれば問題ありません。
 
 
 - Azureポータル ＞ Azure Functions ＞ 概要 ＞ 既定のドメイン　をコピー<br>
     <img src="./images/300.png" alt="代替テキスト" width="1000"> 
 - Azure Functions ＞ 関数 ＞ アプリキー ＞ mcp_extension　をコピー<br>
-    <img src="./images/301.png" alt="代替テキスト" width="1000"> 
+    <img src="./images/301.png" alt="代替テキスト" width="800"> 
 - FunctionsのMCP拡張にアクセスするURLを作る
     ```
     https://<既定のドメイン>/runtime/webhooks/mcp/sse?code=<mcp_extensionの値>
@@ -143,7 +151,7 @@
 - コネクタの名前とURLを記入して追加<br>
     <img src="./images/302.png" alt="代替テキスト" width="600"> 
 - 接続成功を確認したら、新規チャットでコネクタを有効化<br>
-    <img src="./images/303.png" alt="代替テキスト" width="800"> 
+    <img src="./images/303.png" alt="代替テキスト" width="600"> 
 - カスタムコネクタを使ってみた<br>
     <img src="./images/304.png" alt="代替テキスト" width="800"> 
 
