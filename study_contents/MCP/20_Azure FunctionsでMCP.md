@@ -104,7 +104,7 @@
     <img src="./images/203.png" alt="代替テキスト" width="800"> 
 - FunctionsにGithub連携した時点で自動的にデプロイが開始される。
     しかし、自動的に作成される設定ファイル（※）が原因で失敗する<br>
-    <img src="./images/204.png" alt="代替テキスト" width="800"> 
+    <img src="./images/204.png" alt="代替テキスト" width="800"> <br>
     ※　自動デプロイのときに `.github/workflows` が作成される。<br>
         <img src="./images/205.png" alt="代替テキスト" width="800"> 
 - `.github/workflows` を直すために、VScodeに `fetch` する<br>
@@ -116,10 +116,12 @@
     remote-build: 'true'
     ```
     <img src="./images/207.png" alt="代替テキスト" width="1000"> 
-- 変更をコミットしてGithubも更新＝自動的にAzure Functionも再デプロイ開始<br>
+- 変更をコミットしてGithub更新 → 自動的にAzure Functionも再デプロイ開始<br>
     <img src="./images/208.png" alt="代替テキスト" width="800"> 
 - 成功して完了したところ<br>
     <img src="./images/209.png" alt="代替テキスト" width="800"> 
+
+---
 
 ## ClaudeにMCPを接続
 > **注意**
@@ -129,23 +131,23 @@
 > 　なお、Webアプリ化したシステムからFunctionsのMCPにつなぐ場合は、URLを環境変数で管理すれば問題ありません。
 
 
-- Azureポータル＞Azure Functions＞概要＞既定のドメイン　をコピー<br>
+- Azureポータル ＞ Azure Functions ＞ 概要 ＞ 既定のドメイン　をコピー<br>
     <img src="./images/300.png" alt="代替テキスト" width="1000"> 
-- Azure Functions＞関数＞アプリキー＞mcp_extension　をコピー<br>
+- Azure Functions ＞ 関数 ＞ アプリキー ＞ mcp_extension　をコピー<br>
     <img src="./images/301.png" alt="代替テキスト" width="1000"> 
 - FunctionsのMCP拡張にアクセスするURLを作る
     ```
     https://<既定のドメイン>/runtime/webhooks/mcp/sse?code=<mcp_extensionの値>
     ```
-- Claude＞設定＞コネクタ＞カスタムコネクタを追加
+- Claude ＞ 設定 ＞ コネクタ ＞ カスタムコネクタを追加
 - コネクタの名前とURLを記入して追加<br>
-    <img src="./images/302.png" alt="代替テキスト" width="800"> 
+    <img src="./images/302.png" alt="代替テキスト" width="600"> 
 - 接続成功を確認したら、新規チャットでコネクタを有効化<br>
     <img src="./images/303.png" alt="代替テキスト" width="800"> 
 - カスタムコネクタを使ってみた<br>
     <img src="./images/304.png" alt="代替テキスト" width="800"> 
 
 ### CtatGPTの場合
-- ChatGPT＞設定＞アプリとコネクター＞一番下までスクロール＞高度な設定＞開発者モードをオン
-- ChatGPT＞設定＞アプリとコネクター＞右上の`作成する`
+- ChatGPT ＞ 設定 ＞ アプリとコネクタ ＞ 一番下までスクロール ＞ 高度な設定 ＞ 開発者モードをオン
+- ChatGPT ＞ 設定 ＞ アプリとコネクタ ＞ 右上の`作成する`
 - 名前、説明、URLを記入。認証は`認証なし`。リスクへの警告にチェックして作成。
