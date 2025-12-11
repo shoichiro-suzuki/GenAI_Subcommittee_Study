@@ -7,7 +7,7 @@
 | タイトル | URL | 言語 | 学べる内容 |
 |---------|-----|------|-----------|
 | An Easy Introduction to Multimodal RAG | https://developer.nvidia.com/blog/an-easy-introduction-to-multimodal-retrieval-augmented-generation/ | 英語 | NVIDIA公式。CLIP活用、画像キャプショニング、複数ストア+リランカーの3アプローチ |
-| マルチモーダルRAGを作ってみた | https://dev.classmethod.jp/articles/multimodal-rag-chatbot/ | 日本語 | Amazon Titan、Azure AI Vision、Vertex AIのマルチモーダル埋め込みAPI比較 |
+| <span style="color:red">マルチモーダルRAGを作ってみた</span> | https://dev.classmethod.jp/articles/multimodal-rag-chatbot/ | 日本語 | Amazon Titan、Azure AI Vision、Vertex AIのマルチモーダル埋め込みAPI比較 |
 | Multi-Vector Retriever for RAG on tables, text, and images | https://blog.langchain.com/semi-structured-multi-modal-rag/ | 英語 | テーブル・テキスト・画像を含む半構造化データのRAG構築手法 |
 
 #### メタデータ付与：意図と効果
@@ -15,14 +15,13 @@
 | タイトル | URL | 言語 | 学べる内容 |
 |---------|-----|------|-----------|
 | RAGでの回答精度向上のためのテクニック集 | https://zenn.dev/knowledgesense/articles/cec1cd43244524 | 日本語 | メタデータ付加によるフィルタリング、Self-queryingの実践テクニック |
-| RAGの性能を改善するための8つの戦略 | https://fintan.jp/page/10301/ | 日本語 | メタデータフィルタリング（日付・位置情報等）、PDFTriageによる文書構造活用 |
+| <span style="color:red">RAGの性能を改善するための8つの戦略</span> | https://fintan.jp/page/10301/ | 日本語 | メタデータフィルタリング（日付・位置情報等）、PDFTriageによる文書構造活用 |
 
 #### 文章の正規化
 
 | タイトル | URL | 言語 | 学べる内容 |
 |---------|-----|------|-----------|
-| The Role of Preprocessing in RAG | https://www.deepset.ai/blog/preprocessing-rag | 英語 | テキスト正規化（空白除去、ヘッダー/フッター処理）の体系的解説 |
-| 日本語テキストの前処理 | https://tuttieee.hatenablog.com/entry/ja-nlp-preprocess | 日本語 | neologdnによる表記ゆれ吸収、半角/全角統一など実践的手法 |
+| <span style="color:red">日本語テキストの前処理</span> | https://tuttieee.hatenablog.com/entry/ja-nlp-preprocess | 日本語 | neologdnによる表記ゆれ吸収、半角/全角統一など実践的手法 |
 | RAG検索は前処理×チャンクで決まる | https://www.openbridge.jp/column/rag-preprocess-chunking | 日本語 | 5ステップの前処理フローとメタデータスキーマ設計 |
 
 #### 用語の統一：ベストプラクティス
@@ -40,13 +39,14 @@
 |---------|-----|------|-----------|
 | RAG with Azure Document Intelligence | https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept/retrieval-augmented-generation | 英語 | **Microsoft公式**。Layout modelによる文書構造解析、309言語対応OCR |
 | Transform RAG with Azure AI Document Intelligence | https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/elevating-rag-and-search-the-synergy-of-azure-ai-document/ba-p/4006348 | 英語 | 段落・表・見出し・数式抽出、Markdown出力 |
-| Azure AI Searchの「マルチモーダルRAG」を試してみた | https://www.qes.co.jp/media/azure/aisearch/a562 | 日本語 | 画像言語化、Document Intelligence Layout Skillの実践 |
+| <span style="color:red">Azure AI Searchの「マルチモーダルRAG」を試してみた</span> | https://www.qes.co.jp/media/azure/aisearch/a562 | 日本語 | 画像言語化、Document Intelligence Layout Skillの実践 |
 
 **Document Intelligence・構造解析**
 
 | タイトル | URL | 言語 | 学べる内容 |
 |---------|-----|------|-----------|
 | Prep your Data for RAG with Azure AI Search | https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/prep-your-data-for-rag-with-azure-ai-search-content-layout-markdown-parsing--imp/4303538 | 英語 | Document Layout Skillによる構造認識チャンキング |
+|　<span style="color:red">Azure AI Document Intelligence による文書構造の解析</span>|https://qiita.com/nohanaga/items/1263f4a6bc909b6524c8|日本語|Document intelligenceの詳細なレスポンスデータ解説|
 | VISRAG: マルチモーダル文書における視覚ベースのRAG | https://note.com/shimmyo_lab/n/n84f93b9e5ae4 | 日本語 | 最新研究VisRAG。ページ画像を直接扱うVision-Language Model活用 |
 
 ---
@@ -57,6 +57,7 @@
 
 | タイトル | URL | 言語 | 学べる内容 |
 |---------|-----|------|-----------|
+|<span style="color:red">MTEB Leaderboard</span>|https://huggingface.co/spaces/mteb/leaderboard|英語|エンベディングモデルのランキング|
 | Choosing an Embedding Model | https://www.pinecone.io/learn/series/rag/embedding-models-rundown/ | 英語 | **Pinecone公式**。Ada 002、Cohere、E5の比較、MTEBリーダーボード活用法 |
 | Step-by-Step Guide to Choosing the Best Embedding Model | https://weaviate.io/blog/how-to-choose-an-embedding-model | 英語 | **Weaviate公式**。タスク別選定基準、次元数・トークン数のトレードオフ |
 | How to Choose the Right Embedding Model for RAG | https://milvus.io/blog/how-to-choose-the-right-embedding-model-for-rag.md | 英語 | コンテキストウィンドウ、トークナイゼーション方式の影響 |
@@ -79,13 +80,13 @@
 |---------|-----|------|-----------|
 | How to recursively split text by characters | https://python.langchain.com/v0.2/docs/how_to/recursive_text_splitter/ | 英語 | **LangChain公式**。RecursiveCharacterTextSplitterの実装例 |
 | Node Parser Modules | https://docs.llamaindex.ai/en/stable/module_guides/loading/node_parsers/modules/ | 英語 | **LlamaIndex公式**。SentenceSplitter、TokenTextSplitter等 |
-| RAGにおけるチャンクとは？ | https://ai-market.jp/technology/rag-chunk/ | 日本語 | チャンキングの基礎から応用まで網羅的に解説 |
+| <span style="color:red">RAGにおけるチャンクとは？</span> | https://ai-market.jp/technology/rag-chunk/ | 日本語 | チャンキングの基礎から応用まで網羅的に解説 |
 
 #### セマンティックチャンキング
 
 | タイトル | URL | 言語 | 学べる内容 |
 |---------|-----|------|-----------|
-| Semantic Chunker - LlamaIndex | https://developers.llamaindex.ai/python/examples/node_parsers/semantic_chunking/ | 英語 | 埋め込み類似度に基づく意味分割の実装例 |
+|  <span style="color:red">Chunking Strategies to Improve Your RAG Performance</span>| https://weaviate.io/blog/chunking-strategies-for-rag | 英語 | アニメーションで解説 |
 | Semantic Chunking - VectorHub | https://superlinked.com/vectorhub/articles/semantic-chunking | 英語 | 3種類のセマンティックチャンキング手法の比較評価 |
 | Improving RAG Performance: WTF is Semantic Chunking? | https://www.fuzzylabs.ai/blog-post/improving-rag-performance-semantic-chunking | 英語 | コサイン距離を用いた分割境界検出の原理 |
 
@@ -104,7 +105,7 @@
 |---------|-----|------|-----------|
 | How to use the Parent Document Retriever | https://python.langchain.com/docs/how_to/parent_document_retriever/ | 英語 | **LangChain公式**。子チャンク検索→親チャンク取得の実装 |
 | Advanced RAG 01: Small-to-Big Retrieval | https://medium.com/data-science/advanced-rag-01-small-to-big-retrieval-172181b396d4 | 英語 | Small-to-Big検索の詳細解説と実装例 |
-| Parent-child Retrieval - Dify | https://dify.ai/blog/introducing-parent-child-retrieval-for-enhanced-knowledge | 英語 | 製品での実装例、精度向上メカニズム |
+| Parent-child Retrieval | https://dify.ai/blog/introducing-parent-child-retrieval-for-enhanced-knowledge | 英語 | 製品での実装例、精度向上メカニズム |
 
 **Late Chunking（後分割手法）**— 2024年Jina AI発表の革新的手法
 
@@ -158,12 +159,6 @@
 | Understanding the BM25 full text search algorithm | https://emschwartz.me/understanding-the-bm25-full-text-search-algorithm/ | 英語 | BM25の数学的基礎と動作原理 |
 | Practical BM25 - Elasticsearch | https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables | 英語 | **Elastic公式**。k1、bパラメータの実践的解説 |
 
-#### セマンティック検索（Semantic Search）
-
-| タイトル | URL | 言語 | 学べる内容 |
-|---------|-----|------|-----------|
-| Semantic search with FAISS - Hugging Face | https://huggingface.co/learn/llm-course/chapter5/6 | 英語 | sentence-transformersとFAISSの実装 |
-| Building a semantic search engine in OpenSearch | https://opensearch.org/blog/semantic-search-solutions/ | 英語 | プリトレイン・カスタムモデル両方の実装 |
 
 #### メタデータフィルター
 
